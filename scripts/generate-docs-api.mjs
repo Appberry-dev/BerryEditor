@@ -66,7 +66,11 @@ const INTERFACES = [
 ]
 
 function normalizeText(value) {
-  return value.replace(/\s+/g, ' ').trim().replace(/^\|\s*/, '')
+  return value
+    .replace(/\s+/g, ' ')
+    .trim()
+    .replace(/^\|\s*/, '')
+    .replace(/import\("[^"]+"\)\./g, '')
 }
 
 function sortObjectKeys(value) {
