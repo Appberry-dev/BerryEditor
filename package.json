@@ -14,7 +14,7 @@
     "lint": "pnpm -r lint",
     "docs:generate": "node scripts/generate-docs-api.mjs",
     "docs:check": "node scripts/generate-docs-api.mjs --check",
-    "docs:build": "pnpm --filter docs build",
+    "docs:build": "pnpm --filter docs... build",
     "docs:ci": "pnpm docs:check && pnpm typecheck && pnpm docs:build",
     "test": "pnpm -r test",
     "test:e2e": "pnpm --filter @appberry/berryeditor test:e2e",
