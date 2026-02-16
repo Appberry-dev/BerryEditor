@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@appberry/berrypickr": "^2.0.0",
+    "@fontsource/material-symbols-rounded": "5.2.35",
     "@radix-ui/react-popover": "^1.1.15",
     "dompurify": "^3.2.5"
   },
