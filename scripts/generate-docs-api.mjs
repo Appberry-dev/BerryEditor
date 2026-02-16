@@ -249,7 +249,7 @@ function collectDeclarations(program, checker) {
       const returnType = declaration.type
         ? normalizeText(declaration.type.getText())
         : checker.typeToString(checker.getTypeAtLocation(declaration), declaration)
-      return `(${parameters.join(', ')}) => ${returnType}`
+      return normalizeText(`(${parameters.join(', ')}) => ${returnType}`)
     }
 
     if (ts.isVariableDeclaration(declaration)) {
@@ -258,7 +258,9 @@ function collectDeclarations(program, checker) {
       }
 
       const type = checker.getTypeAtLocation(declaration)
-      return checker.typeToString(type, declaration, ts.TypeFormatFlags.NoTruncation)
+      return normalizeText(
+        checker.typeToString(type, declaration, ts.TypeFormatFlags.NoTruncation)
+      )
     }
 
     return 'unknown'
