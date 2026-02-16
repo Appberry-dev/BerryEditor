@@ -1,0 +1,58 @@
+{
+  "name": "@appberry/berryeditor",
+  "version": "1.0.0",
+  "description": "React-first rich text editor with HTML canonical persistence",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./next": {
+      "types": "./dist/next/client.d.ts",
+      "import": "./dist/next/client.js",
+      "require": "./dist/next/client.cjs"
+    },
+    "./styles.css": "./src/theme/berryeditor.css"
+  },
+  "files": [
+    "dist",
+    "src/theme/berryeditor.css"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "rich-text",
+    "editor",
+    "react",
+    "nextjs",
+    "wysiwyg",
+    "berryeditor"
+  ],
+  "peerDependencies": {
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@appberry/berrypickr": "^2.0.0",
+    "@radix-ui/react-popover": "^1.1.15",
+    "dompurify": "^3.2.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup --config tsup.config.ts",
+    "dev": "tsup --config tsup.config.ts --watch",
+    "generate:emoji-catalog": "node scripts/generate-emoji-catalog.mjs",
+    "lint": "eslint src tests --ext .ts,.tsx",
+    "prepack": "npm run build && node scripts/verify-package-exports.mjs",
+    "release:check": "npm run lint && npm run typecheck && npm run test && npm run test:e2e && npm run build && node scripts/verify-package-exports.mjs && npm pack --dry-run --json",
+    "test": "vitest run",
+    "test:e2e": "playwright test -c playwright.config.ts",
+    "typecheck": "tsc --project tsconfig.json --noEmit"
+  }
+}
